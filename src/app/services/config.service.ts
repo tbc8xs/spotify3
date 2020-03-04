@@ -9,7 +9,7 @@ export class ConfigService {
 
   client_id: string = '32d6f488b7e9464193cd76e8cea8711a'; // Your client id
   client_secret: string = '7cfa925f610d4aa78ea0956874f197b3'; // Your secret
-  redirect_uri: string = 'http://localhost:4200/callback'; // Your redirect uri
+  redirect_uri: string = 'http://localhost:4200/home'; // Your redirect uri
   scope: string = 'user-library-read';
 
   constructor(private http: HttpClient) { }
