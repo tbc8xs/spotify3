@@ -10,19 +10,14 @@ import { ConfigService } from '../services/config.service';
 export class LoginComponent implements OnInit {
 
   constructor(private configService: ConfigService) { }
-
+  url : string = "";
   ngOnInit() {
+    this.url = this.configService.getAuthorizationURL()
+    console.log(this.url);
   }
 
-  authorize(){
-    this.configService.getAuthorization()
-    .subscribe(result => {
-      //console.log(result);
-    });
-  }
 
-  loginClicked(){
-    this.authorize();
-  }
+
+
 
 }

@@ -7,7 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { CallbackComponent } from './callback/callback.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,10 +18,7 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   }
   ,
-  { path: 'callback',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  }
+  { path: 'callback', component: CallbackComponent}
 ];
 
 
@@ -28,13 +26,15 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
     NoopAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     RouterModule.forRoot(
       appRoutes
     )
