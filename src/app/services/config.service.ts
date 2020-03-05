@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
+import { HttpClient, HttpClientJsonpModule, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
+import { Buffer } from 'buffer';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,24 @@ export class ConfigService {
     var url ="https://accounts.spotify.com/authorize?client_id="+this.client_id+"&response_type=code&redirect_uri="+  encodeURIComponent(this.redirect_uri) +"&scope="+ encodeURIComponent(this.scope) +"&state="+state;
     console.log(url);
     return url;
+  }
 
+  getRequestRefreshTokens(code) {
+    var self =this;
+
+    let body = new HttpParams()
+      .set('code' , code)
+      .set('redirect_uri' , this.redirect_uri)
+      .set('grant_type' , 'authorization_code')
+
+    let options = {
+      headers : new HttpHeaders()
+      .set('Authorization', 'Basic ' + btoa(this.client_id + ':' + this.client_secret))
+    };
+      
+    console.log(this.http.post('https://accounts.spotify.com/api/token', body, options));
+
+    return this.http.post('https://accounts.spotify.com/api/token', body, options);
   }
 
   randomString(length) {
