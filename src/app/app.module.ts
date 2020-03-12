@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { SongListComponent } from './song-list/song-list.component';
+import { ArtistListComponent } from './artist-list/artist-list.component';
 
 
 const appRoutes: Routes = [
@@ -25,7 +27,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    SongListComponent,
+    ArtistListComponent
   ],
   imports: [
     BrowserModule,
