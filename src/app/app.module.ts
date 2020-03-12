@@ -10,11 +10,14 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { SongListComponent } from './song-list/song-list.component';
 import { ArtistListComponent } from './artist-list/artist-list.component';
+import { CommonTracksComponent } from './common-tracks/common-tracks.component';
+import { FormsModule } from '@angular/forms';
 
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'common-tracks', component: CommonTracksComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -29,7 +32,8 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     SongListComponent,
-    ArtistListComponent
+    ArtistListComponent,
+    CommonTracksComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ const appRoutes: Routes = [
     MaterialModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes
     )

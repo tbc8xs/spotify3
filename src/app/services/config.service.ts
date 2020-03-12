@@ -109,6 +109,38 @@ export class ConfigService {
     return result;
   }
 
+  getCurrentUserInfo(accessToken) {
+    console.log('gettins user info');
+    let url = `https://api.spotify.com/v1/me`
+    let options = {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + accessToken)
+    }
+    return this.http.get(url, options);
+  }
+
+  getTracks(id, accessToken) {
+    let url = `https://api.spotify.com/v1/playlists/${id}/tracks`
+    let options = {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + accessToken)
+      // params: new HttpParams().set('limit', '50')
+    }
+​
+    return this.http.get(url, options);
+​
+  }
+
+  getPlaylists(accessToken, userName) {
+    console.log('fetching public playlists', accessToken);
+    let url = `https://api.spotify.com/v1/users/${userName}/playlists`
+    let options = {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + accessToken),
+      params: new HttpParams().set('limit', '50')
+    };
+    console.log('optionsasa', options)
+​
+    return this.http.get(url, options);
+  }
+
 
 
 }
