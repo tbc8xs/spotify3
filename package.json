@@ -23,7 +23,7 @@
     "@angular/router": "~9.0.2",
     "buffer": "^5.4.3",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "query-string": "^6.11.1",
     "request": "^2.88.2",
     "rxjs": "^6.5.4",
